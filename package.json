@@ -1,0 +1,48 @@
+{
+  "name": "noteit",
+  "version": "1.0.0",
+  "description": "Plataforma de anotações colaborativa com sincronização em tempo real, utilizando Node.js, WebSockets e MongoDB",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "websocket",
+    "mongodb",
+    "javascript",
+    "real-time",
+    "collaborative",
+    "notes",
+    "annotation",
+    "synchronization",
+    "realtime-collaboration",
+    "notes-app",
+    "collaborative-platform",
+    "productivity",
+    "teamwork",
+    "brainstorming",
+    "knowledge-management",
+    "backend",
+    "api",
+    "rest",
+    "database",
+    "nosql",
+    "open-source",
+    "free",
+    "self-hosted",
+    "cloud"
+  ],
+  "author": "Alef Porto",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongodb": "^6.8.0",
+    "socket.io": "^4.7.5"
+  }
+}
