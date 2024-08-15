@@ -1,4 +1,4 @@
-const socket = io();
+import { emitirTextoAlterado } from './socket-front-note.js';
 
 // Seleciona os elementos HTML que serão manipulados
 const tagTituloHTML = document.getElementById('titulo-pagina');
@@ -15,10 +15,12 @@ tagTituloNote.innerHTML = nomeNote || "Anotação sem título";
 
 // Envia um evento para o servidor informando que o texto foi alterado
 tagTextoNote.addEventListener('keyup', () => {
-    socket.emit('texto_alterado', tagTextoNote.value);
+    emitirTextoAlterado(tagTextoNote.value);
 })
 
-// Atualiza o conteúdo do campo de texto com o novo texto recebido do servidor
-socket.on('atualizar_texto', (texto) => {
-    tagTextoNote.value = texto;
-})
+// Atualiza o campo de texto com o texto passado via parâmetro
+function atualizaCampoTexto(texto){
+    tagTextoNote.value = texto
+}
+
+export { atualizaCampoTexto };
