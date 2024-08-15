@@ -11,12 +11,12 @@ const app = express();
 const PORT = process.env.PORT ?? 3000;
 
 const currentPath = url.fileURLToPath(import.meta.url); // Pega a URL atual do arquivo server.js e converte pra path
-const publicDirectory = path.join(currentPath, "../..", "public") // Cria o caminho para a pasta public
+const publicDirectory = path.join(currentPath, '../..', 'public') // Cria o caminho para a pasta public
 app.use(express.static(publicDirectory)); // Serve os arquivos da pasta public pro Express
 
 const HttpServer = http.createServer(app)
 HttpServer.listen(PORT, () => { console.log(`Escutando na porta ${PORT}`); });
 
-const io = new Server(HttpServer);
+const io = new Server(HttpServer); // Instancia do nosso servidor WebSocket
 
 export default io;
