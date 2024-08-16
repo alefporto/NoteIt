@@ -10,6 +10,14 @@ function findNote(nomeNote) {
     return notesCollection.findOne({ tittle: nomeNote });
 }
 
+// Cria uma nota anotação no banco de dados com o nome passado no input
+function createNote(nomeNote) {
+    return notesCollection.insertOne({
+        tittle: nomeNote,
+        text: ""
+    })
+}
+
 // Atualiza o texto de uma anotação no banco de dados de acordo com o nome dela
 function updateNote(nomeNote, textoNote) {
     return notesCollection.updateOne(
@@ -20,5 +28,6 @@ function updateNote(nomeNote, textoNote) {
 export {
     getAllNotes,
     findNote,
+    createNote,
     updateNote
 };

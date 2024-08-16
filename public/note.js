@@ -3,7 +3,7 @@ import { selecionarNote, emitirTextoAlterado } from './socket-front-note.js';
 // Seleciona os elementos HTML que serão manipulados
 const tituloHTML = document.getElementById('titulo-pagina');
 const tituloNote = document.getElementById('titulo-note');
-const textoNote = document.getElementById('texto-note');
+const textoNote  = document.getElementById('texto-note');
 
 // Pega o nome da anotação pelos query params
 const params = new URLSearchParams(window.location.search);
