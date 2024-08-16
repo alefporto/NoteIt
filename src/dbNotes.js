@@ -1,8 +1,15 @@
 import { notesCollection } from "./dbConnect.js";
 
 // Obtém todas as anotações do banco de dados e as retorna em um array
-function getAllNotes(){
+function getAllNotes() {
     return notesCollection.find().toArray()
 }
 
-export { getAllNotes };
+function findNote(nomeNote) {
+    return notesCollection.findOne({ tittle: nomeNote });
+}
+
+export {
+    getAllNotes,
+    findNote
+};
