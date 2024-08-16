@@ -13,6 +13,8 @@ try {
     notesCollection = database.collection('notes');
 
     console.log("Conectado com sucesso ao banco de dados");
-} catch(err){
+} catch (err) {
     console.log(err.message);
 }
+
+export { notesCollection };

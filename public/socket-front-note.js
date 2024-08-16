@@ -2,7 +2,7 @@ import { atualizaCampoTexto } from "./note.js";
 
 const socket = io();
 
-// Emite um evento para o servidor para indicar que um cleinte entrou nessa anotação
+// Emite um evento para o servidor para indicar que um cliente entrou nessa anotação
 function selecionarNote(nomeNote){
     socket.emit('selecionar_note', nomeNote);
 }
