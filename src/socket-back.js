@@ -1,5 +1,5 @@
 import io from './server.js';
-import { getAllNotes, findNote } from './dbNotes.js';
+import { getAllNotes, findNote, updateNote } from './dbNotes.js';
 
 io.on("connection", (socket) => {
     console.log(`Um cliente se conectou! ID: ${socket.id}`);
@@ -16,12 +16,15 @@ io.on("connection", (socket) => {
 
         const note = await findNote(nomeNote);
 
-        if (note) atualizarTextoCallback(note.text); // Se existir a anotação no banco de dados, devolve pro front o texto dela
+        if(note) atualizarTextoCallback(note.text); // Se existir a anotação no banco de dados, devolve pro front o texto dela
     })
 
     // Processa o evento de edição de texto recebido do cliente
-    socket.on('texto_alterado', (nomeNote, textoNote) => {
-        // Emite evento de atualização da interface para os clientes que estiverem na mesma anotação
-        socket.to(nomeNote).emit('atualizar_texto', textoNote);
+    socket.on('texto_alterado', async (nomeNote, textoNote) => {
+        const updateStatus = await updateNote(nomeNote, textoNote);
+
+        // Se for feita alguma atualização no banco, emite evento de atualização da interface para os clientes que estiverem na mesma anotação
+        if(updateStatus.modifiedCount)
+            socket.to(nomeNote).emit('atualizar_texto', textoNote);
     })
 })

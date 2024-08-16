@@ -5,11 +5,20 @@ function getAllNotes() {
     return notesCollection.find().toArray()
 }
 
+// Obtém uma anotação de acordo com o nome dela
 function findNote(nomeNote) {
     return notesCollection.findOne({ tittle: nomeNote });
 }
 
+// Atualiza o texto de uma anotação no banco de dados de acordo com o nome dela
+function updateNote(nomeNote, textoNote) {
+    return notesCollection.updateOne(
+        { tittle: nomeNote },
+        { $set: { text: textoNote } })
+}
+
 export {
     getAllNotes,
-    findNote
+    findNote,
+    updateNote
 };
