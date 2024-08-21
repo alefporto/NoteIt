@@ -1,5 +1,5 @@
 import io from './server.js';
-import { getAllNotes, findNote, createNote, updateNote } from './dbNotes.js';
+import { getAllNotes, findNote, createNote, updateNote, deleteNote } from './dbNotes.js';
 
 io.on("connection", (socket) => {
     console.log(`Um cliente se conectou! ID: ${socket.id}`);
@@ -40,5 +40,14 @@ io.on("connection", (socket) => {
         // Se for feita alguma atualização no banco, emite evento de atualização da interface para os clientes que estiverem na mesma anotação
         if(updateStatus.modifiedCount)
             socket.to(nomeNote).emit('atualizar_texto', textoNote);
+    })
+
+    // Processa o evento de exclusão de uma anotação
+    socket.on('excluir_note', async (nomeNote) => {
+        const row = await deleteNote(nomeNote);
+        
+        // Se a anotação foi excluída, emite evento de atualização da interface de todos os clientes
+        if(row.acknowledged)
+            io.emit('note_excluida', nomeNote);
     })
 })

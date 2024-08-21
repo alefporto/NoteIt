@@ -25,9 +25,15 @@ function updateNote(nomeNote, textoNote) {
         { $set: { text: textoNote } })
 }
 
+// Deleta a anotação do banco de dados
+function deleteNote(nomeNote) {
+    return notesCollection.deleteOne({ tittle: nomeNote });
+}
+
 export {
     getAllNotes,
     findNote,
     createNote,
-    updateNote
+    updateNote,
+    deleteNote
 };
