@@ -2,10 +2,15 @@
   "name": "noteit",
   "version": "1.0.0",
   "description": "Plataforma de anotações colaborativa com sincronização em tempo real, utilizando Node.js, WebSockets e MongoDB",
-  "main": "server.js",
+  "main": "src/socket-back.js",
+  "engines": {
+    "node": "20.x"
+  },
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/socket-back.js"
+    "dev": "nodemon src/socket-back.js",
+    "start": "node src/socket-back.js",
+    "build": "echo 'Build step completed'"
   },
   "keywords": [
     "nodejs",
